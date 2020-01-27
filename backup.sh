@@ -1,34 +1,9 @@
-Skip to content
-Search or jump to…
-
-Pull requests
-Issues
-Marketplace
-Explore
- 
-@Baskaran1994 
-Learn Git and GitHub without any code!
-Using the Hello World guide, you’ll start a branch, write comments, and open a pull request.
-
-
-sue445
-/
-jenkins-backup-script
-18
-312158
- Code Issues 1 Pull requests 0 Actions Projects 0 Wiki Security Insights
-jenkins-backup-script/jenkins-backup.sh
-@rluisr rluisr refactoring
-89dbdb4 on Aug 3, 2018
-@sue445@ynott@maafy6@SEJeff@JackLeo@toru81@sarg@namikawa@rubenjgarcia@kakkun61@jonniedarko@rluisr@fredrikand@banyan
-Executable File  103 lines (77 sloc)  2.84 KB
-  
 #!/bin/bash -xe
 #
 # jenkins backup scripts
 # https://github.com/sue445/jenkins-backup-script
 #
-# Usage: ./jenkins-backup.sh /path/to/jenkins_home /path/to/destination/archive.tar.gz
+# Usage: ./jenkins-backup.sh /path/to/jenkins_home /var/ilb/jenkins/archive.tar.gz
 
 
 readonly JENKINS_HOME="$1"
@@ -41,7 +16,7 @@ readonly TMP_TAR_NAME="${TMP_DIR}/archive.tar.gz"
 
 
 function usage() {
-  echo "usage: $(basename $0) /path/to/jenkins_home archive.tar.gz"
+  echo "usage: $(basename $0) /var/lib/jenkins archive.tar.gz"
 }
 
 
@@ -124,17 +99,3 @@ function main() {
 
 
 main
-
-
-© 2020 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
