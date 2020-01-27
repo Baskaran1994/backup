@@ -8,7 +8,7 @@
 
 readonly JENKINS_HOME="$1"
 readonly DEST_FILE="$2"
-readonly CUR_DIR=$(cd $(dirname ${BASH_SOURCE:-$0}); pwd)
+readonly CUR_DIR=$(cd $(/var/lib/jenkins ${BASH_SOURCE:-$0}); pwd)
 readonly TMP_DIR="${CUR_DIR}/tmp"
 readonly ARC_NAME="jenkins-backup"
 readonly ARC_DIR="${TMP_DIR}/${ARC_NAME}"
@@ -71,8 +71,8 @@ function main() {
     cp "${JENKINS_HOME}/plugins/"*.[hj]pi.pinned "${ARC_DIR}/plugins"
   fi
 
-  if [ "$(ls -A ${JENKINS_HOME}/users/)" ]; then
-    cp -R "${JENKINS_HOME}/users/"* "${ARC_DIR}/users"
+  if [ -d /var/lib/jenkins/users ]; then
+    cp -R "/var/lib/jenkins/users "${ARC_DIR}/users"
   fi
 
   if [ "$(ls -A ${JENKINS_HOME}/secrets/)" ] ; then
